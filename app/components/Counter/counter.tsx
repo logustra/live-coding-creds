@@ -12,12 +12,12 @@ import {
   incrementAsync,
   incrementIfOddAsync,
 } from '@/lib/redux'
-import styles from './counter.module.css'
+import styles from './counter.module.scss'
 
 export const Counter = () => {
   const dispatch = useDispatch()
   const count = useSelector(selectCount)
-  const [incrementAmount, setIncrementAmount] = useState(2)
+  const [incrementAmount] = useState(2)
 
   return (
     <div>
@@ -39,20 +39,6 @@ export const Counter = () => {
         </button>
       </div>
       <div className={styles.row}>
-        <input
-          className={styles.textbox}
-          aria-label="Set increment amount"
-          value={incrementAmount}
-          onChange={(e) => setIncrementAmount(Number(e.target.value ?? 0))}
-        />
-        <button
-          className={styles.button}
-          onClick={() =>
-            dispatch(counterSlice.actions.incrementByAmount(incrementAmount))
-          }
-        >
-          Add Amount
-        </button>
         <button
           className={styles.asyncButton}
           onClick={() => dispatch(incrementAsync(incrementAmount))}
